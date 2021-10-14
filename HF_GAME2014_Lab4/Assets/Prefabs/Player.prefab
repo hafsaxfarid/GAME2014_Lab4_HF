@@ -41,8 +41,8 @@ GameObject:
   - component: {fileID: 3174939227350677136}
   - component: {fileID: 3174939227350677139}
   - component: {fileID: 3174939227350677137}
-  - component: {fileID: 3174939227350677142}
   - component: {fileID: 6066640702118998341}
+  - component: {fileID: 3174939227350677142}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -138,23 +138,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 6
---- !u!114 &3174939227350677142
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3174939227350677138}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4840048a1e766764aaa9de3625370056, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  horizontalForce: 40
-  decay: 0.1
-  bounds:
-    min: -1.9
-    max: 1.9
 --- !u!60 &6066640702118998341
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -187,3 +170,22 @@ PolygonCollider2D:
       - {x: 0.07, y: -0.27}
       - {x: 0.25, y: -0.08}
       - {x: 0.45, y: -0.1}
+--- !u!114 &3174939227350677142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3174939227350677138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4840048a1e766764aaa9de3625370056, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  horizontalForce: 40
+  decay: 0.1
+  bounds:
+    min: -1.9
+    max: 1.9
+  frameDelay: 5
+  bulletSpawn: {fileID: 74468548}
