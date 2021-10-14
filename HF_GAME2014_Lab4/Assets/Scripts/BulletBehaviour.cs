@@ -8,12 +8,31 @@ public class BulletBehaviour : MonoBehaviour
     [Range(0.0f, 0.5f)]
     public float speed;
     public Bounds bulletBounds;
+    public BulletDirection direction;
 
     private BulletManager bulletManager;
+    private Vector3 bulletVelocity;
 
     void Start()
     {
         bulletManager = GameObject.FindObjectOfType<BulletManager>();
+
+        switch (direction)
+        {
+            case BulletDirection.UP:
+                bulletVelocity = new Vector3(0f, speed, 0f);
+                break;
+            case BulletDirection.RIGHT:
+                bulletVelocity = new Vector3(speed, 0f, 0f);
+                break;
+            case BulletDirection.DOWN:
+                bulletVelocity = new Vector3(0f, -speed, 0f);
+                break;
+            case BulletDirection.LEFT:
+                bulletVelocity = new Vector3(-speed, 0f, 0f);
+                break;
+        }
+
     }
 
     void FixedUpdate()
@@ -24,16 +43,20 @@ public class BulletBehaviour : MonoBehaviour
 
     private void Move()
     {
-        transform.position -= new Vector3(0.0f, speed, 0.0f);
-
+        transform.position += bulletVelocity;
     }
 
     private void CheckBounds()
     {
+        // checks bototm bounds
         if(transform.position.y < bulletBounds.max)
         {
-            //Destroy(this.gameObject);
+            bulletManager.ReturnBullet(this.gameObject);
+        }
 
+        // checks top bounds
+        if (transform.position.y > bulletBounds.min)
+        {
             bulletManager.ReturnBullet(this.gameObject);
         }
     }
